@@ -12,7 +12,7 @@ Otherwise it will not be able to resolve packages.
 
 ## Packages
 
-We use next packages for development:
+We use next packages for development in this codebase:
 
 - numpy
 - matplotlib
