@@ -1,4 +1,6 @@
+import math
 import numpy as np
+import sympy as sp
 
 def run():
   problem_2_1_13()
@@ -8,6 +10,8 @@ def run():
   problem_2_4_13()
   print()
   problem_3_1_13()
+  print()
+  problem_5_1_13()
 
 
 def problem_2_1_13():
@@ -52,3 +56,17 @@ def problem_3_1_13():
   x = np.linalg.solve(args, solutions)
   print("3.1.13")
   print("x =", x)
+
+def problem_5_1_13():
+  angle = np.pi / 4
+  moduleA = math.sqrt(2)
+  moduleB = 3
+
+  a, b = sp.symbols('a,b')
+  expression = sp.expand((5*a + 2*b) * (-1*a + 3*b)) 
+  print(expression)
+  # sp.solvel
+
+  print("5.1.13 (a)")
+  
+  
