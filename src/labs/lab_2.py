@@ -53,8 +53,6 @@ def problem_2():
     ax.set_title("Polar Curve of Second Order", va="bottom")
     ax.legend(loc="upper right")
 
-    # Show the plot
-
 
 def f(x):
     a = -2
