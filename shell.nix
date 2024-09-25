@@ -9,7 +9,10 @@ pkgs.mkShell {
         ps.sympy 
         ps.numpy 
         ps.matplotlib 
+        ps.black
       ])
     )
   ];
 }
+
+
