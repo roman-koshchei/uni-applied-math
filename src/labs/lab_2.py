@@ -57,7 +57,7 @@ def problem_2():
 def f(x):
     a = -2
     b = 20
-    c = x**2 + 2 * math.sqrt(3) * x - 47
+    c = x**2 + 2 * math.sqrt(3) * x - 4
     roots = np.roots([a, b, c])
     return roots[0], roots[1]
 
@@ -133,34 +133,31 @@ def problem_4():
 
 def problem_5_1():
     # Set up the x values for both lines
-    x_values = np.linspace(-10, 10, 400)
+    x = np.linspace(-10, 10, 400)
+    y = np.linspace(-10, 10, 400) 
 
-    # Calculate y values for line 1 (y^2 = 2*x)
-    y_positive = np.sqrt(2 * x_values)  # Positive branch
-    y_negative = -np.sqrt(2 * x_values)  # Negative branch
+    X, Y = np.meshgrid(x, y)
+    # Calculate Z based on the equation y^2 = 2x
+    Z = Y**2 - 2*X
 
-    # Calculate y values for line 2 (4*x - 2*y + 23 = 0)
-    y_line_2 = 2 * x_values + 23 / 2
+    # Plotting
+    plt.figure(figsize=(8, 6))
+    contour = plt.contour(X, Y, Z, levels=[0], colors='blue')  
+    
+    # Plot line 2 (4*x - 2*y - 8 = 0)
+    plt.plot(x, 2*x - 4, color="red", label=r"$4x - 2y + 23 = 0$")
 
-    # Create a figure
-    plt.figure(figsize=(10, 6))
+    # 2*x - 4 = y
+    # 4*x^2 - 18*x + 16 = 0 
+    roots = np.roots([4, -18, 16])
 
-    # Plot line 1 (y^2 = 2*x)
-    plt.plot(
-        x_values[x_values >= 0],
-        y_positive[x_values >= 0],
-        color="blue",
-        label=r"$y^2 = 2x$ (upper)$",
-    )
-    plt.plot(
-        x_values[x_values >= 0],
-        y_negative[x_values >= 0],
-        color="blue",
-        label=r"$y^2 = 2x$ (lower)$",
-    )
+    intersection_xs = roots # x-values of intersections found analytically
+    print(intersection_xs)
+    intersection_ys = [2*x - 4 for x in intersection_xs]
+    print(intersection_ys)
 
-    # Plot line 2 (4*x - 2*y + 23 = 0)
-    plt.plot(x_values, y_line_2, color="red", label=r"$4x - 2y + 23 = 0$")
+    # Plot intersection points
+    plt.scatter(intersection_xs, intersection_ys, color='red', zorder=5)
 
     # Add titles and labels
     plt.title("Graphs of the Equations")
@@ -297,8 +294,8 @@ def run():
     # problem_2()
     # problem_3()
     # problem_4()
-    # problem_5_1()
+    problem_5_1()
     # problem_5_2()
-    problem_6()
+    # problem_6()
 
     plt.show()
