@@ -134,30 +134,30 @@ def problem_4():
 def problem_5_1():
     # Set up the x values for both lines
     x = np.linspace(-10, 10, 400)
-    y = np.linspace(-10, 10, 400) 
+    y = np.linspace(-10, 10, 400)
 
     X, Y = np.meshgrid(x, y)
     # Calculate Z based on the equation y^2 = 2x
-    Z = Y**2 - 2*X
+    Z = Y**2 - 2 * X
 
     # Plotting
     plt.figure(figsize=(8, 6))
-    contour = plt.contour(X, Y, Z, levels=[0], colors='blue')  
-    
+    contour = plt.contour(X, Y, Z, levels=[0], colors="blue")
+
     # Plot line 2 (4*x - 2*y - 8 = 0)
-    plt.plot(x, 2*x - 4, color="red", label=r"$4x - 2y + 23 = 0$")
+    plt.plot(x, 2 * x - 4, color="red", label=r"$4x - 2y + 23 = 0$")
 
     # 2*x - 4 = y
-    # 4*x^2 - 18*x + 16 = 0 
+    # 4*x^2 - 18*x + 16 = 0
     roots = np.roots([4, -18, 16])
 
-    intersection_xs = roots # x-values of intersections found analytically
+    intersection_xs = roots  # x-values of intersections found analytically
     print(intersection_xs)
-    intersection_ys = [2*x - 4 for x in intersection_xs]
+    intersection_ys = [2 * x - 4 for x in intersection_xs]
     print(intersection_ys)
 
     # Plot intersection points
-    plt.scatter(intersection_xs, intersection_ys, color='red', zorder=5)
+    plt.scatter(intersection_xs, intersection_ys, color="red", zorder=5)
 
     # Add titles and labels
     plt.title("Graphs of the Equations")

@@ -1,3 +1,3 @@
-import labs.lab_2 as l
+import labs.lab_3 as l
 
 l.run()
