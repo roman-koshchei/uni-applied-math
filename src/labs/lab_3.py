@@ -74,7 +74,7 @@ def task_3():
     a, b, c = 1, 1, 1
 
     u = np.linspace(0, 2 * np.pi, 100)
-    v = np.linspace(-2, 2, 100)
+    v = np.linspace(-1, 1, 100)
     u, v = np.meshgrid(u, v)
 
     x = a * np.cosh(v) * np.cos(u)
@@ -90,39 +90,14 @@ def task_3():
     plt.show()
 
 
-# def task_4():
-#     x = np.linspace(-2.5, 2.5, 200)  
-#     y = np.linspace(-2.5, 2.5, 200)
-#     x, y = np.meshgrid(x, y)
-
-#     inside_sqrt = (36 - 4 * x**2 - 9 * (y**2 - 4 * y)) / 36
-
-#     inside_sqrt = np.where(inside_sqrt >= 0, inside_sqrt, np.nan)
-
-#     z = np.sqrt(inside_sqrt)
-
-#     fig = plt.figure()
-#     ax = fig.add_subplot(111, projection='3d')
-
-#     ax.plot_surface(x, y, z, cmap='viridis', alpha=0.8)
-#     ax.plot_surface(x, y, -z, cmap='viridis', alpha=0.8)
-
-#     ax.set_xlabel('X')
-#     ax.set_ylabel('Y')
-#     ax.set_zlabel('Z')
-
-#     ax.set_title('4*x^2 + 9*y^2 + 36*z^2 - 36*y - 72*z + 36 = 0')
-
-#     plt.show()
-
 def task_4():
     u = np.linspace(-10, 10, 1000)
     x, y = np.meshgrid(u, u)
 
     a = 36
     b = -72
-    c = 4 * x**2 + 9 * y**2 - 36 * y + 36 
-    D = b**2 - 4*a*c
+    c = 4 * x**2 + 9 * y**2 - 36 * y + 36
+    D = b**2 - 4 * a * c
     D[D < 0] = 0
 
     sqrtD = np.sqrt(D)
@@ -130,24 +105,26 @@ def task_4():
     z2 = (-b - sqrtD) / (2 * a)
 
     fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    
-    ax.contour(x, y, z1, levels=50, cmap='viridis', alpha=0.7)
-    ax.contour(x, y, z2, levels=50, cmap='viridis_r', alpha=0.7)
-    
-    ax.set_xlabel('X axis')
-    ax.set_ylabel('Y axis')
-    ax.set_zlabel('Z axis')
-    ax.set_title('3D Contour Plot of the Surface')
+    ax = fig.add_subplot(111, projection="3d")
+
+    ax.contour(x, y, z1, levels=50, cmap="viridis", alpha=0.7)
+    ax.contour(x, y, z2, levels=50, cmap="viridis_r", alpha=0.7)
+
+    ax.set_xlabel("X axis")
+    ax.set_ylabel("Y axis")
+    ax.set_zlabel("Z axis")
+    ax.set_title("3D Contour Plot of the Surface")
 
     plt.show()
+
 
 def task_5():
     bars_count = 17
 
     fig = plt.figure()
+    fig.set_label("Diagram")
     ax = fig.add_subplot(111, projection="3d")
-
+    
     heights_1 = np.random.rand(bars_count)
     heights_2 = np.random.rand(bars_count)
     heights_3 = np.random.rand(bars_count)
@@ -177,9 +154,58 @@ def task_5():
     plt.show()
 
 
+def task_6():
+    fig = plt.figure(figsize=(12, 8))
+    ax1 = fig.add_subplot(221, projection='3d')
+    ax2 = fig.add_subplot(222, projection='3d')
+    ax3 = fig.add_subplot(212, polar=True)
+    
+    # 1
+    u = np.linspace(0, 2 * np.pi, 100)
+    v = np.linspace(-1, 1, 100)
+    u, v = np.meshgrid(u, v)
+    x = np.cosh(v) * np.cos(u)
+    y = np.cosh(v) * np.sin(u)
+    z = np.sinh(v)
+    ax1.plot_wireframe(x, y, z, color="b")
+    ax1.set_title("One-sheet hyperboloid")
+
+
+    # 2
+    u = np.linspace(-10, 10, 500)
+    x, y = np.meshgrid(u, u)
+
+    a = 36
+    b = -72
+    c = 4 * x**2 + 9 * y**2 - 36 * y + 36
+    D = b**2 - 4 * a * c
+    D[D < 0] = 0
+
+    sqrtD = np.sqrt(D)
+    z1 = (-b + sqrtD) / (2 * a)
+    z2 = (-b - sqrtD) / (2 * a)
+
+    ax2.contour(x, y, z1, levels=50, cmap="viridis", alpha=0.7)
+    ax2.contour(x, y, z2, levels=50, cmap="viridis_r", alpha=0.7)
+    
+    ax2.set_title("3D Contour Plot of the Surface")
+
+    # 3
+    theta = np.linspace(0, 2 * np.pi, 100)
+    r = 2 * np.cos(2 * theta)
+    ax3.fill(theta, np.maximum(r, 0), color="lightblue", alpha=0.5)
+    ax3.plot(theta, np.maximum(r, 0), color="b")
+    ax3.set_title("r=2*cos(2a)")
+
+    # Показати графіки
+    plt.tight_layout()
+    plt.show()
+
+
 def run():
     # task_1()
     # task_2()
     # task_3()
-    task_4()
+    # task_4()
     # task_5()
+    task_6()

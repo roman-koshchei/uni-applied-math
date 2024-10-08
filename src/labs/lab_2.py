@@ -290,12 +290,12 @@ def problem_6():
 
 
 def run():
-    # problem_4_3_13()
-    # problem_2()
-    # problem_3()
-    # problem_4()
+    problem_4_3_13()
+    problem_2()
+    problem_3()
+    problem_4()
     problem_5_1()
-    # problem_5_2()
-    # problem_6()
+    problem_5_2()
+    problem_6()
 
     plt.show()
