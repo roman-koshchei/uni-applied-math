@@ -124,7 +124,7 @@ def task_5():
     fig = plt.figure()
     fig.set_label("Diagram")
     ax = fig.add_subplot(111, projection="3d")
-    
+
     heights_1 = np.random.rand(bars_count)
     heights_2 = np.random.rand(bars_count)
     heights_3 = np.random.rand(bars_count)
@@ -156,10 +156,10 @@ def task_5():
 
 def task_6():
     fig = plt.figure(figsize=(12, 8))
-    ax1 = fig.add_subplot(221, projection='3d')
-    ax2 = fig.add_subplot(222, projection='3d')
+    ax1 = fig.add_subplot(221, projection="3d")
+    ax2 = fig.add_subplot(222, projection="3d")
     ax3 = fig.add_subplot(212, polar=True)
-    
+
     # 1
     u = np.linspace(0, 2 * np.pi, 100)
     v = np.linspace(-1, 1, 100)
@@ -169,7 +169,6 @@ def task_6():
     z = np.sinh(v)
     ax1.plot_wireframe(x, y, z, color="b")
     ax1.set_title("One-sheet hyperboloid")
-
 
     # 2
     u = np.linspace(-10, 10, 500)
@@ -187,7 +186,7 @@ def task_6():
 
     ax2.contour(x, y, z1, levels=50, cmap="viridis", alpha=0.7)
     ax2.contour(x, y, z2, levels=50, cmap="viridis_r", alpha=0.7)
-    
+
     ax2.set_title("3D Contour Plot of the Surface")
 
     # 3
