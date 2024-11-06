@@ -1,4 +1,4 @@
-import labs.lab_4 as l
+import labs.lab_5 as l
 
 # import test as t
 

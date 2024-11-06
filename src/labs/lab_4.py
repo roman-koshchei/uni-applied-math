@@ -83,11 +83,11 @@ def task_2():
 
         ax.cla()
         ax.plot_surface(x_rotated, y_rotated, z_rotated, color="gray", alpha=0.7)
-        
+
         ax.set_xlim(-2, 2)
         ax.set_ylim(-2, 2)
         ax.set_zlim(-2, 2)
-        
+
         ax.set_xlabel("X")
         ax.set_ylabel("Y")
         ax.set_zlabel("Z")
@@ -103,32 +103,33 @@ def task_3():
     theta = np.linspace(0, 2 * np.pi, 1000)
     r = 2 * np.cos(n * theta)
 
-    fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+    fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
     ax.set_ylim(-2, 2)  # Встановлення меж для радіусу
 
     # Функція для ініціалізації анімації
-    line, = ax.plot([], [], lw=2, color='red')
+    (line,) = ax.plot([], [], lw=2, color="red")
 
     def init():
         line.set_data([], [])
-        return line,
+        return (line,)
 
     # Функція для анімації
     def animate(i):
         if i < 100:
-            line.set_data(theta[:i * 10], r[:i * 10])
-        else: 
+            line.set_data(theta[: i * 10], r[: i * 10])
+        else:
             phase = (i - 100) * 0.1
             r_moving = 2 * np.cos(n * (theta + phase))
             line.set_data(theta, r_moving)
-        return line,
+        return (line,)
 
-    
-    return animation.FuncAnimation(fig, animate, init_func=init, frames=200, interval=50, blit=True)
+    return animation.FuncAnimation(
+        fig, animate, init_func=init, frames=200, interval=50, blit=True
+    )
 
 
 def run():
-    anim = task_1()
-    anim2 = task_2()
+    # anim = task_1()
+    # anim2 = task_2()
     anim3 = task_3()
     plt.show()
