@@ -72,7 +72,7 @@ def task_3_2_13_part_2():
 
     # norm is derivative in this case
     norm_grad_u_at_M1 = sp.sqrt(sum(component**2 for component in grad_u_at_M1))
-
+    
     print("Task 3.2.13")
     print(str(norm_grad_u_at_M1))
 
@@ -99,7 +99,6 @@ def task_3_3_13_part_2():
         determinant = d2z_dx2.subs(p) * d2z_dy2.subs(p) - d2z_dxdy.subs(p) ** 2
         f_xx = d2z_dx2.subs(p)
 
-        # Визначаємо тип екстремуму на основі знака визначника Гессе та значення d2z_dx2
         if determinant > 0:
             if f_xx > 0:
                 extrema.append((point, "Local minimum"))
@@ -165,8 +164,37 @@ def task_3_1_13_part_3():
     plt.title("Fourier Series Approximation of f(x)")
     plt.legend()
     plt.grid(True)
-    plt.show()
 
+
+def task_3_1_13_part_3_v2():
+    x = sp.Symbol("x")
+    f = sp.Piecewise(
+        (1, (x > -sp.pi) & (x < 0)), (sp.pi - 2 * x, (x >= 0) & (x < sp.pi))
+    )
+
+    l = sp.pi
+    n = 10
+
+    fourier_series = sp.fourier_series(f, (x, -l, l)).truncate(n)
+
+    x_vals = np.linspace(-np.pi, np.pi, 500)
+    f_vals = [f.subs(x, val).evalf() for val in x_vals]
+    fourier_vals = [fourier_series.subs(x, val).evalf() for val in x_vals]
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_vals, f_vals, label="f(x)", color="blue")
+    plt.plot(
+        x_vals,
+        fourier_vals,
+        label=f"Fourier Series (N={n})",
+        linestyle="--",
+        color="red",
+    )
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.title("Fourier Series Approximation of f(x)")
+    plt.legend()
+    plt.grid(True)
 
 def task_1_1_13_part_3():
     n = sp.symbols("n")
@@ -228,26 +256,30 @@ def draw_4():
 
 
 def run():
-    task_2_4_13_part_1()
-    print()
-    task_4_3_13_part_1()
-    print()
-    task_2_1_13_part_2()
-    print()
-    task_3_1_13_part_2()
-    print()
-    task_3_2_13_part_2()
-    print()
-    task_3_3_13_part_2()
-    print()
-    task_1_3_13_part_2()
-    print()
-    # task_3_1_13_part_3()
-    print()
-    task_1_1_13_part_3()
-    print()
+    
+    task_3_1_13_part_3()
+    task_3_1_13_part_3_v2()
+    plt.show()
 
-    draw_1()
-    draw_2()
-    draw_3()
-    draw_4()
+    # task_2_4_13_part_1()
+    # print()
+    # task_4_3_13_part_1()
+    # print()
+    # task_2_1_13_part_2()
+    # print()
+    # task_3_1_13_part_2()
+    # print()
+    # task_3_2_13_part_2()
+    # print()
+    # task_3_3_13_part_2()
+    # print()
+    # task_1_3_13_part_2()
+    # print()
+    # print()
+    # task_1_1_13_part_3()
+    # print()
+
+    # draw_1()
+    # draw_2()
+    # draw_3()
+    # draw_4()
