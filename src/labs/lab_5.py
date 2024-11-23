@@ -72,7 +72,7 @@ def task_3_2_13_part_2():
 
     # norm is derivative in this case
     norm_grad_u_at_M1 = sp.sqrt(sum(component**2 for component in grad_u_at_M1))
-    
+
     print("Task 3.2.13")
     print(str(norm_grad_u_at_M1))
 
@@ -196,6 +196,7 @@ def task_3_1_13_part_3_v2():
     plt.legend()
     plt.grid(True)
 
+
 def task_1_1_13_part_3():
     n = sp.symbols("n")
 
@@ -256,30 +257,27 @@ def draw_4():
 
 
 def run():
-    
-    task_3_1_13_part_3()
+    task_2_4_13_part_1()
+    print()
+    task_4_3_13_part_1()
+    print()
+    task_2_1_13_part_2()
+    print()
+    task_3_1_13_part_2()
+    print()
+    task_3_2_13_part_2()
+    print()
+    task_3_3_13_part_2()
+    print()
+    task_1_3_13_part_2()
+    print()
     task_3_1_13_part_3_v2()
+    print()
+    task_1_1_13_part_3()
+    print()
     plt.show()
 
-    # task_2_4_13_part_1()
-    # print()
-    # task_4_3_13_part_1()
-    # print()
-    # task_2_1_13_part_2()
-    # print()
-    # task_3_1_13_part_2()
-    # print()
-    # task_3_2_13_part_2()
-    # print()
-    # task_3_3_13_part_2()
-    # print()
-    # task_1_3_13_part_2()
-    # print()
-    # print()
-    # task_1_1_13_part_3()
-    # print()
-
-    # draw_1()
-    # draw_2()
-    # draw_3()
-    # draw_4()
+    draw_1()
+    draw_2()
+    draw_3()
+    draw_4()

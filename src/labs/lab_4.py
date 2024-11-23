@@ -129,7 +129,7 @@ def task_3():
 
 
 def run():
-    # anim = task_1()
-    # anim2 = task_2()
+    anim = task_1()
+    anim2 = task_2()
     anim3 = task_3()
     plt.show()
