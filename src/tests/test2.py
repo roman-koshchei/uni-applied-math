@@ -53,7 +53,7 @@ def task2():
     plt.plot(x, y)
 
     plt.title("x = 4 * (np.cos(t) ** 3);  y = 4 * (np.sin(t) ** 3)")
-    
+
     plt.grid()
 
 
